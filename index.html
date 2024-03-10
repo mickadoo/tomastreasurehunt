@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Final Step</title>
+    <style>
+        input {
+            max-width: 12px;
+        }
+
+        #final_link {
+            font-size: 2rem;
+        }
+        .warning {
+            color: darkred;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<h2>Enter Your Codes</h2>
+<p>Enter the codes from all your clues to generate the link to the final location</p>
+<table>
+    <tr>
+        <td><label for="first">1</label></td>
+        <td><input maxlength="1" type="text" id="first" name="first"></td>
+    </tr>
+    <tr>
+        <td><label for="second">2</label></td>
+        <td><input maxlength="1" type="text" id="second" name="second"></td>
+    </tr>
+    <tr>
+        <td><label for="third">3</label></td>
+        <td><input maxlength="1" type="text" id="third" name="third"></td>
+    </tr>
+    <tr>
+        <td><label for="fourth">4</label></td>
+        <td><input maxlength="1" type="text" id="fourth" name="fourth"></td>
+    </tr>
+    <tr>
+        <td><label for="fifth">5</label></td>
+        <td><input maxlength="1" type="text" id="fifth" name="fifth"></td>
+    </tr>
+    <tr>
+        <td><label for="sixth">6</label></td>
+        <td><input maxlength="1" type="text" id="sixth" name="sixth"></td>
+    </tr>
+    <tr>
+        <td><label for="seventh">7</label></td>
+        <td><input maxlength="1" type="text" id="seventh" name="seventh"></td>
+    </tr>
+    <tr>
+        <td><label for="eight">8</label></td>
+        <td><input maxlength="1" type="text" id="eight" name="eight"></td>
+    </tr>
+    <tr>
+        <td><label for="ninth">9</label></td>
+        <td><input maxlength="1" type="text" id="ninth" name="ninth"></td>
+    </tr>
+    <tr>
+        <td><label for="tenth">10</label></td>
+        <td><input maxlength="1" type="text" id="tenth" name="tenth"></td>
+    </tr>
+</table>
+<div>
+    <p class="warning">Only when all characters are correctly entered will the link point you to the correct location<br/>
+    Enter everything in the correct case!</p>
+    <h3>This is the link to the treasure</h3>
+    <a target="_blank" id="final_link" href="">
+        loading...
+    </a>
+</div>
+<script>
+    recalculate = function () {
+        let target = "https://maps.app.goo.gl/wXiiHRj" +
+            document.getElementById('first').value +
+            document.getElementById('second').value +
+            document.getElementById('third').value +
+            document.getElementById('fourth').value +
+            document.getElementById('fifth').value +
+            document.getElementById('sixth').value +
+            document.getElementById('seventh').value +
+            document.getElementById('eight').value +
+            document.getElementById('ninth').value +
+            document.getElementById('tenth').value;
+
+        let link = document.getElementById('final_link');
+        link.href = target;
+        link.innerHTML = target;
+    };
+
+    recalculate();
+
+    const inputs = document.querySelectorAll("input");
+    inputs.forEach(function (input) {
+        input.addEventListener("change", () => {
+            recalculate();
+        })
+    });
+</script>
+</body>
+</html>
